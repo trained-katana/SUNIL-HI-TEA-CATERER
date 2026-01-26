@@ -38,36 +38,16 @@
   /* ===== MOBILE NAVBAR HEIGHT FIX ===== */
  /* ===== MOBILE NAVIGATION FIX ===== */
 @media (max-width: 768px) {
+    nav {
+      height: auto !important;
+      min-height: unset !important;
+    }
 
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;              /* 🔥 stops half-screen issue */
-    max-height: 64px;          /* adjust if your navbar is taller */
-    padding: 10px 16px;
-    box-sizing: border-box;
-    z-index: 1000;
+    .nav-links {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
   }
-
-  body {
-    padding-top: 70px;         /* prevents content hiding under nav */
-  }
-
-  /* If you have a menu container */
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* If you have a hamburger/menu button */
-  .menu,
-  .nav-links {
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-}
 </style>
     :root {
       --primary: #ff4e00;
@@ -705,6 +685,7 @@ color: rgb(0, 0, 0);
 </body>
 
 </html>
+
 
 
 
