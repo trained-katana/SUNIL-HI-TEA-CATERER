@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Sunil Hi Tea Caterer | Elegant Indian Catering</title>
 
@@ -21,13 +21,14 @@
       --blur: blur(15px);
     }
 
-    /* --- 1. REMOVE BLUE TAP HIGHLIGHT --- */
+    /* --- GLOBAL RESETS & NO BLUE TAP --- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile tap */
-      cursor: none; /* Hide default cursor to show custom one */
+      -webkit-tap-highlight-color: transparent !important; /* Forces removal of blue box on mobile */
+      outline: none !important;
+      cursor: none; /* Hide default cursor everywhere */
     }
 
     html {
@@ -42,32 +43,42 @@
       overflow-x: hidden;
     }
 
-    a, button {
-      cursor: none; /* Ensure links/buttons don't show default hand cursor */
+    a, button, input {
+      cursor: none; /* Ensure interactive elements don't show hand cursor */
     }
 
-    /* --- 2. CUSTOM CURSOR --- */
+    /* --- CUSTOM CURSOR & TRAIL --- */
     .custom-cursor {
       position: fixed;
       top: 0;
       left: 0;
-      width: 15px;
-      height: 15px;
-      border: 2px solid var(--primary);
+      width: 12px;
+      height: 12px;
+      background-color: white; /* Changed to White */
       border-radius: 50%;
-      pointer-events: none; /* Allows clicking through the cursor */
+      pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s;
-      mix-blend-mode: difference; /* Makes cursor visible on light/dark backgrounds */
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: exclusion; /* Cool effect over images */
     }
 
-    /* Cursor expands when hovering over links/buttons */
-    .custom-cursor.hovered {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 78, 0, 0.3);
-      border-color: transparent;
+    /* The "Trail" dots */
+    .cursor-trail {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      animation: fadeOut 0.8s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.1); }
     }
 
     /* HEADER */
@@ -78,25 +89,25 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      position: fixed; /* Must be fixed for scroll effect */
+      position: fixed; /* Always fixed */
       width: 100%;
       top: 0;
+      left: 0;
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      
-      /* Smooth transition for hiding/showing/shrinking */
-      transition: transform 0.4s ease, padding 0.4s ease, background-color 0.4s;
+      transition: transform 0.3s ease-in-out, padding 0.3s ease, background-color 0.3s;
     }
 
-    /* Class to hide header (scroll down) */
+    /* Class to hide header */
     header.nav-hidden {
       transform: translateY(-100%);
     }
 
-    /* Class to make header narrow (scroll up) */
+    /* Class for narrow/slim header */
     header.nav-narrow {
-      padding: 8px 30px; /* Reduced padding */
-      background-color: rgba(0, 0, 0, 0.98); /* Less transparent */
+      padding: 8px 30px;
+      background-color: rgba(0, 0, 0, 0.98);
+      border-bottom: 1px solid #333;
     }
 
     .logo {
@@ -105,10 +116,9 @@
       color: var(--primary);
       font-weight: 700;
       white-space: nowrap;
-      transition: font-size 0.4s ease;
+      transition: font-size 0.3s ease;
     }
 
-    /* Shrink logo when narrow */
     header.nav-narrow .logo {
       font-size: 1.4rem;
     }
@@ -132,7 +142,7 @@
 
     /* HERO SECTION */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://media.istockphoto.com/id/1186759773/photo/paneer-tikka-at-skewers-in-black-bowl-at-dark-slate-background-paneer-tikka-is-an-indian.jpg?s=612x612&w=0&k=20&c=LYsyEmVzFMff1U7XQw_QmarM7G2KFudCwmR7TsYVSRM=') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://media.istockphoto.com/id/1186759773/photo/paneer-tikka-at-skewers-in-black-bowl-at-dark-slate-background-paneer-tikka-is-an-indian.jpg?s=612x612&w=0&k=20&c=LYsyEmVzFMff1U7XQw_QmarM7G2KFudCwmR7TsYVSRM=') center/cover no-repeat;
       background-attachment: fixed;
       height: 100vh;
       display: flex;
@@ -166,7 +176,6 @@
       font-size: 1rem;
       border-radius: 50px;
       border: none;
-      cursor: none; /* Use custom cursor */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
       display: inline-block;
@@ -337,18 +346,24 @@
         align-items: flex-start;
         padding: 15px 20px;
         gap: 10px;
+        transition: transform 0.3s ease, background-color 0.3s;
       }
 
-      /* Adjust header padding for narrow mode on mobile */
+      /* Slim header on mobile scroll up */
       header.nav-narrow {
-        padding: 10px 15px;
-        flex-direction: row; /* Switch to row when narrow to save space */
+        padding: 8px 15px;
+        flex-direction: row; 
         align-items: center;
       }
 
       header.nav-narrow .logo {
         margin-bottom: 0;
         font-size: 1.2rem;
+      }
+
+      header.nav-narrow nav {
+        width: auto;
+        padding-bottom: 0;
       }
 
       .logo {
@@ -518,51 +533,62 @@
       once: true
     });
 
-    // --- 3. CUSTOM CURSOR LOGIC ---
+    // --- CURSOR & TRAIL LOGIC ---
     const cursor = document.querySelector('.custom-cursor');
     
+    // Function to create trails
+    function createTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = x + 'px';
+        trail.style.top = y + 'px';
+        document.body.appendChild(trail);
+
+        // Remove the trail after animation
+        setTimeout(() => {
+            trail.remove();
+        }, 800);
+    }
+
+    // PC Movement
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
+      createTrail(e.clientX, e.clientY);
     });
 
+    // Mobile Movement
     document.addEventListener('touchmove', (e) => {
-        // Simple touch follow for mobile
-        cursor.style.left = e.touches[0].clientX + 'px';
-        cursor.style.top = e.touches[0].clientY + 'px';
+        const touch = e.touches[0];
+        cursor.style.left = touch.clientX + 'px';
+        cursor.style.top = touch.clientY + 'px';
+        createTrail(touch.clientX, touch.clientY);
     }, { passive: true });
 
-    // Hover effect for links and buttons
-    const interactiveElements = document.querySelectorAll('a, button, nav a');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-    });
-
-    // --- 4. SCROLL LOGIC (DISAPPEAR DOWN, APPEAR NARROW UP) ---
+    // --- SCROLL LOGIC ---
     let lastScrollTop = 0;
     const header = document.getElementById('main-header');
 
     window.addEventListener('scroll', function() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      if (scrollTop > lastScrollTop) {
-        // SCROLLING DOWN -> HIDE HEADER
+      // Mobile & Desktop Scroll Behavior
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // Scrolling Down -> Hide
         header.classList.add('nav-hidden');
         header.classList.remove('nav-narrow');
       } else {
-        // SCROLLING UP -> SHOW HEADER (NARROW)
+        // Scrolling Up -> Show
         header.classList.remove('nav-hidden');
         
-        // Only make it narrow if we aren't at the very top
         if (scrollTop > 50) {
-            header.classList.add('nav-narrow');
+            header.classList.add('nav-narrow'); // Make slim
         } else {
-            header.classList.remove('nav-narrow');
+            header.classList.remove('nav-narrow'); // Default size at top
         }
       }
       
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
   </script>
 </body>
