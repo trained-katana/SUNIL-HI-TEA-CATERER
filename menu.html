@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🍽️  Party Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+      color: #f5f5f5;
+      
+      /* --- NEW LINES FOR CENTERING --- */
+      margin: 0 auto;   /* Centers the content horizontally */
+      max-width: 800px; /* Stops the page from getting too wide on PC */
+      /* ------------------------------- */
+
+      padding: 40px;
+      animation: fadeIn 1.2s ease-in;
+    }
+    
+    .marquee-container {
+      background: #222;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .marquee-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ff4e00;
+      letter-spacing: 1px;
+    }
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      color: #ff4e00;
+      margin-bottom: 50px;
+      font-size: 36px;
+      animation: bounceIn 1s ease;
+    }
+    .form-group {
+      margin: 25px 0;
+      font-size: 18px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    .form-group input:focus {
+      border-color: #ff7f50;
+      outline: none;
+    }
+
+    .regard-section {
+      color: darkgrey;
+    }
+
+    
+    .call-section {
+      background-color: #1c1c1c;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 50px;
+      border: 1px solid #333;
+    }
+    .call-us-text {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .call-link {
+      font-size: 20px;
+      background-color: #333;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .call-link:hover {
+      background-color: #444;
+    }
+    .whatsapp-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .whatsapp-link {
+      font-size: 18px;
+      background-color: #25D366;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .menu-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .menu-button {
+      font-size: 18px;
+      background-color: #ff4e00;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(255, 78, 0, 0.3);
+      cursor: pointer;
+    }
+    .menu-button:hover {
+      background-color: #ff6f1f;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Mobile Optimization */
+@media (max-width: 600px) {
+  body {
+    padding: 20px; /* Reduces padding on small screens */
+  }
+
+  h1 {
+    font-size: 28px; /* Slightly smaller title for mobile */
+    margin-bottom: 30px;
+  }
+  
+  .marquee-text {
+    font-size: 16px; /* Prevents scrolling text from dominating the screen */
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="marquee-container">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      <span class="marquee-text">🎉 Vegetarian Party Catering — Stylish. Delicious. Easy. 🍴</span>
+    </marquee>
+  </div>
+
+  <h1>🍽️ Party Menu 🍽️</h1>
+
+  <div class="regard-section">
+  <h5> ENTER YOUR DETAILS AND TAP CONTACT VIA WHATSAPP</h5>
+</div>
+
+  <div class="form-group">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+  </div>
+
+  
+  
+
+  <div class="form-group">
+    <label for="partyLocation">Party Location:</label>
+    <input type="text" id="partyLocation" placeholder="Enter the location">
+  </div>
+
+  <div class="form-group">
+    <label for="peopleCount">Number of People:</label>
+    <input type="number" id="peopleCount" placeholder="e.g. 50">
+  </div>
+
+  <div class="call-section">
+    <div class="call-us-text">Need Help? Call Us Now!</div>
+    <a href="tel:+919631919023" class="call-link">📞 Call Now</a>
+  </div>
+
+  <div class="whatsapp-section">
+    <button class="whatsapp-link" onclick="sendOrderToWhatsApp()">💬 Contact via WhatsApp</button>
+  </div>
+
+  <!-- Download PDF Button -->
+  <div class="menu-section">
+    <a href="SUNIL%20HI%20TEA%20CTERER%20FOOD%20MENU.pdf" download class="menu-button">📥 Download Food Menu (PDF)</a>
+  </div>
+
+  <script>
+    function sendOrderToWhatsApp() {
+      const name = document.getElementById('name').value.trim();
+      const location = document.getElementById('partyLocation').value.trim();
+      const count = document.getElementById('peopleCount').value.trim();
+
+      if (!name || !location || !count) {
+        alert("Please complete all details.");
+        return;
+      }
+
+      let msg = `🎉 New Party Inquiry!\n\n👤 Name: ${name}\n📍 Location: ${location}\n👥 Number of People: ${count}\n\nPlease share more menu options.`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/919631919023?text=${encoded}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>

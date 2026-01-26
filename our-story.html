@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story - Sunil Hi Tea Caterer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #fff;
+      line-height: 1.8;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    /* Page Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      box-sizing: border-box; /* Ensures padding doesn't widen the page */
+    }
+
+    /* Section Header */
+    .story-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .story-header h1 {
+      font-size: 2.5rem;
+      color: #ff4e00; /* Matching your brand orange */
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .story-header p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    /* Story Content */
+    .story-content {
+      font-size: 1.1rem;
+      color: #ddd;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .story-content p {
+      margin-bottom: 20px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .gallery h2 {
+      font-size: 2rem;
+      color: #ff4e00;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .gallery-images {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery-images img {
+      width: 48%; /* Two images per row on desktop */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+    }
+
+    /* --- RESPONSIVE STYLES --- */
+    @media screen and (max-width: 768px) {
+      .story-header h1 {
+        font-size: 2rem;
+      }
+
+      .story-content {
+        font-size: 1rem;
+        padding: 0 10px; /* Adds breathing room for text on mobile */
+      }
+
+      /* Stacks images 1 per row on mobile */
+      .gallery-images img {
+        width: 100%; 
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="story-header">
+      <h1>OUR STORY</h1>
+      <p>From humble beginnings to Jamshedpur's most trusted luxury catering service.</p>
+    </div>
+
+    <div class="story-content">
+      <p>It all began in 2000 when Sunil, a passionate foodie and visionary, started his journey to bring authentic Indian flavors to his community in Jamshedpur. With an unwavering commitment to quality and taste, Sunil Hi Tea Caterer grew from a small venture into a trusted name in the catering industry.</p>
+      <p>Our mission has always been simple: to offer delicious, high-quality, and authentic Indian cuisine, perfect for every occasion. Whether it's a wedding, a corporate event, or a private gathering, we pride ourselves on our attention to detail, presentation, and customer satisfaction.</p>
+      <p>Over the years, we've refined our catering services, added new dishes to our menu, and expanded our offerings to include everything from traditional feasts to contemporary twists on classic dishes.</p>
+    </div>
+
+  </div> </body>
+</html>
